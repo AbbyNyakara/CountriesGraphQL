@@ -3,7 +3,7 @@ import Countries from './pages/Countries.jsx';
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-gray-100">
       <Countries />
     </div>
   )

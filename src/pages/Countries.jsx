@@ -35,11 +35,11 @@ const Countries = () => {
   if (error) return <img src={errorImg} alt="" />
 
   return (
-    <div>
+    <div className='p-8 grid md:grid-cols-2 lg:grid-cols-4'>
       {
         data.countries.map(country => {
           return(
-            <div key={country.code} className="shadow-md">
+            <div key={country.code} className="shadow-md bg-white m-4 p-4 rounded">
               <p className='font-semibold'>Country Name: <span className='font-normal'>{country.name}</span></p>
               <p>Capital City: <span>{country.capital}</span></p>
               <p>Continent: <span>{country.continent.name}</span></p>
