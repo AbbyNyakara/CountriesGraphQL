@@ -25,11 +25,11 @@ const GET_COUNTRIES = gql`
 const Countries = () => {
   const { error, loading, data } = useQuery(GET_COUNTRIES);
 
-  console.log({
-    error,
-    loading,
-    data
-  });
+  // console.log({
+  //   error,
+  //   loading,
+  //   data
+  // });
 
   if (loading) return <img src={loadingImg} alt="" />
   if (error) return <img src={errorImg} alt="" />
