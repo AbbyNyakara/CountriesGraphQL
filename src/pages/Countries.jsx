@@ -2,7 +2,7 @@ import React from 'react';
 import Error from './Error';
 import { useQuery, gql } from '@apollo/client';
 import loadingImg from '../assets/loading.gif';
-
+import errorImg from '../assets/error.gif';
 
 // Fetch data on the countries
 
@@ -17,7 +17,7 @@ const GET_COUNTRIES = gql`
       capital,
       currency,
       languages{
-        nam
+        name
       }
     }
   }
@@ -32,8 +32,14 @@ const Countries = () => {
   //   data
   // });
 
-  if (loading) return(<div><img src={loadingImg} alt="" /></div>) 
-  if (error) return (<div><Error /></div>) 
+  if (loading) return(<div className='min-h-screen flex flex-col justify-center items-center'><img src={loadingImg} alt="" /></div>) 
+  if (error) return (
+  <div className='min-h-screen text-4xl flex flex-col justify-center items-center'>
+      <img src={errorImg} alt="error page" className='min-w-[30rem] mb-4' />
+      <h2>We've run into a yuuuuuuuuge problem!</h2>
+      <p className='text-xl'>{error.message}</p> 
+    </div>
+  ) 
 
   return (
     <div className='p-8 grid md:grid-cols-2 lg:grid-cols-4'>
