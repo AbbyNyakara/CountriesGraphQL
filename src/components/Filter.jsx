@@ -22,7 +22,8 @@ const Filter = () => {
 
   return (
     <div>
-      <select name="countries">
+      <select name="countries" className='p-2 shadow-md rounded'>
+        <option value="" className=''>Filter by continent</option>
         {
           data?.continents.map((continent, index) => {
             return <option value="" key={index}>{continent.name}</option>

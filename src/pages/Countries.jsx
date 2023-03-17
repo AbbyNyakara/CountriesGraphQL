@@ -1,7 +1,8 @@
 import React from 'react';
+import Error from './Error';
 import { useQuery, gql } from '@apollo/client';
 import loadingImg from '../assets/loading.gif';
-import errorImg from '../assets/error.gif';
+
 
 // Fetch data on the countries
 
@@ -16,7 +17,7 @@ const GET_COUNTRIES = gql`
       capital,
       currency,
       languages{
-        name
+        nam
       }
     }
   }
@@ -31,8 +32,8 @@ const Countries = () => {
   //   data
   // });
 
-  if (loading) return <img src={loadingImg} alt="" />
-  if (error) return <img src={errorImg} alt="" />
+  if (loading) return(<div><img src={loadingImg} alt="" /></div>) 
+  if (error) return (<div><Error /></div>) 
 
   return (
     <div className='p-8 grid md:grid-cols-2 lg:grid-cols-4'>
