@@ -14,11 +14,9 @@ const GET_CONTINENTS = gql`
 
 const Navbar = () => {
 
-  
-
   return (
-    <div>
-      <h1 className=' py-4 font-bold'>Countries of the World!</h1>
+    <div className="flex py-4 px-10 justify-between shadow-md sticky top-0 bg-gray-100">
+      <h1 className='font-bold text-xl'>Countries of the World</h1>
       <Filter />
       <Search />
     </div>
