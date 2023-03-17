@@ -32,7 +32,11 @@ const Countries = () => {
   //   data
   // });
 
+
+  // When the page is loading... 
   if (loading) return(<div className='min-h-screen flex flex-col justify-center items-center'><img src={loadingImg} alt="" /></div>) 
+  
+  // When there is an error 
   if (error) return (
   <div className='min-h-screen text-4xl flex flex-col justify-center items-center'>
       <img src={errorImg} alt="error page" className='min-w-[30rem] mb-4' />
@@ -62,6 +66,6 @@ const Countries = () => {
       }
     </div>
   )
-}
+};
 
 export default Countries;
