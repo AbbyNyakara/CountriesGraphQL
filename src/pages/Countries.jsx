@@ -55,6 +55,7 @@ const Countries = () => {
               <p className='font-semibold'>Capital City: <span className='font-normal'>{country.capital}</span></p>
               <p className='font-semibold'>Continent: <span className='font-normal'>{country.continent.name}</span></p>
               <p className='font-semibold'>Currency: <span className='font-normal'>{country.currency}</span></p>
+              <p>{country.code}</p>
               {
                 country.languages.map((language, idx) => {
                   <small key={idx} className='font-semibold'><span>{language}</span></small>
