@@ -1,35 +1,50 @@
-import React, { useState} from 'react';
-import { useLazyQuery, gql } from '@apollo/client';
+import React, {useState} from 'react';
+import { useQuery, gql, useLazyQuery} from '@apollo/client';
 
-// Define the query 
-const LIST_COUNTRIES_BY_CONTINENT = gql`
-  query ListCountriesByContinent($continent: StringQueryOperatorInput!) {
+// Query for fetching the continents
+const GET_CONTINENTS = gql`
+  query {
+    continents {
+      name
+    }
+  }
+`
+
+// Query for filtering countries by continent 
+const FILTER_BY_CONTINENTS = gql`
+  query FilterByContinents($continent: String!) {
     countries(filter: {
-      continent: $continent
+      continent: {eq: $continent}
     }) {
       name,
       capital,
       currency
     }
   }
+
 `
 
-const Search = () => {
+// Filter component
+const Filter = () => {
+  const [continent, setContinent] = useState("");
+  const {error, loading, data } = useQuery(GET_CONTINENTS);
 
-  // Country name input 
-  const [ continent, setContinent ] = useState();
-
-  // Using lazy query
-  const [getCoutries, {data, loading, error, called}] = useLazyQuery(LIST_COUNTRIES_BY_CONTINENT, {variables: {
-    continent
-  }})
+  // const [getCountries, {error, loading, data}] = useLazyQuery(FILTER_BY_CONTINENTS, {variables: {
+  //   continent
+  // }})
 
   return (
     <div>
-      <input value={continent} onChange={(e) => setContinent(e.target.value)} type="text" placeholder='Filter countries by continent' className='p-2 border-none outline-none shadow-md rounded'/>
-      <button onClick={getCoutries()}>Search</button>
+      <select name="countries" className='p-2 shadow-md rounded' value={continent} onChange={(e) => setContinent(e.target.value)}>
+        <option value="all">Filter by continent</option>
+        {
+          data?.continents.map((continent, index) => {
+            return <option value={continent.name} key={index}>{continent.name}</option>
+          })
+        }
+      </select>
     </div>
   )
 }
 
-export default Search;
+export default Filter

@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div className="flex py-4 px-10 justify-between shadow-md sticky top-0 bg-gray-100">
       <Link className='font-bold text-xl' to="/">Countries of the World</Link>
-      {/* <Filter /> */}
+      <Filter />
       {/* <Search /> */}
     </div>
   )
