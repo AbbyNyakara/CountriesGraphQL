@@ -1,50 +1,9 @@
-import React, {useState} from 'react';
-import { useQuery, gql, useLazyQuery} from '@apollo/client';
+import React from 'react'
 
-// Query for fetching the continents
-const GET_CONTINENTS = gql`
-  query {
-    continents {
-      name
-    }
-  }
-`
-
-// Query for filtering countries by continent 
-const FILTER_BY_CONTINENTS = gql`
-  query FilterByContinents($continent: String!) {
-    countries(filter: {
-      continent: {eq: $continent}
-    }) {
-      name,
-      capital,
-      currency
-    }
-  }
-
-`
-
-// Filter component
-const Filter = () => {
-  const [continent, setContinent] = useState("");
-  const {error, loading, data } = useQuery(GET_CONTINENTS);
-
-  // const [getCountries, {error, loading, data}] = useLazyQuery(FILTER_BY_CONTINENTS, {variables: {
-  //   continent
-  // }})
-
+const Search = () => {
   return (
-    <div>
-      <select name="countries" className='p-2 shadow-md rounded' value={continent} onChange={(e) => setContinent(e.target.value)}>
-        <option value="all">Filter by continent</option>
-        {
-          data?.continents.map((continent, index) => {
-            return <option value={continent.name} key={index}>{continent.name}</option>
-          })
-        }
-      </select>
-    </div>
+    <div>Search</div>
   )
 }
 
-export default Filter
+export default Search
