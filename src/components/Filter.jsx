@@ -1,17 +1,9 @@
-import React from 'react';
-import { useQuery, gql} from '@apollo/client';
+import React, {useState} from 'react';
+import { useQuery, gql, useLazyQuery} from '@apollo/client';
 
 // Query for fetching the continents
-const GET_CONTINENTS = gql`
-  query {
-    continents {
-      name
-    }
-  }
-`
-
 const Filter = () => {
-
+  const [name, setName] = useState("");
   const {error, loading, data } = useQuery(GET_CONTINENTS);
 
   // console.log({
