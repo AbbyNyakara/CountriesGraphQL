@@ -25,9 +25,16 @@ const Filter = () => {
 
   return (
     <div>
-      <form action="" method="get">
-        
-      </form>
+      <select className='p-2 outline-none'>
+      <option value="all" >All Countries</option>
+        {
+          continentData.map((data, index) => {
+            return(
+              <option value={data.code} key={index}>{data.name}</option>
+            )
+          })
+        }
+      </select>
     </div>
   )
 }
